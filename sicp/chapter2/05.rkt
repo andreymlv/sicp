@@ -1,3 +1,4 @@
+; Exercise 2.5
 #lang sicp
 
 (#%require rackunit)
@@ -47,4 +48,6 @@
 
 (check-equal? (cdr (cons 4 5)) 5.0)
 
-(check-equal? (let ((z (cons 4 5))) (cons (car z) (cdr z))) 3888.0)
+(check-equal? (let ([z (cons 4 5)])
+                (cons (car z) (cdr z)))
+              3888.0)
