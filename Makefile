@@ -1,3 +1,5 @@
+all: test lint
+
 install:
 	raco pkg install sicp
 	raco pkg install review
