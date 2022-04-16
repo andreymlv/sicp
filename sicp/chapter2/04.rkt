@@ -12,5 +12,5 @@
 (define (cdr z)
   (z (lambda (_ q) q)))
 
-(check-eq? (car (cons 1 2)) 1)
-(check-eq? (cdr (cons 1 2)) 2)
+(check-equal? (car (cons 1 2)) 1)
+(check-equal? (cdr (cons 1 2)) 2)
