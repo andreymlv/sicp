@@ -18,4 +18,4 @@
         (- 2
            7))))
 
-(check-equal? solution -37/150)
+(check-eq? solution -37/150)
