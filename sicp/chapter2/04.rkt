@@ -1,3 +1,4 @@
+; Exercise 2.4 
 ; https://en.wikipedia.org/wiki/Cons#Functional_implementation
 #lang sicp
 
