@@ -37,8 +37,12 @@
     (lambda (x)
       ((a f) ((b f) x)))))
 
+(define (add-via-1 a b)
+  ((a add-1) b))
+
 (check-equal? ((zero inc) 0) 0)
 (check-equal? ((zero inc) 1) 1)
 (check-equal? ((one inc) 1) 2)
 (check-equal? (((add-1 zero) inc) 1) 2)
 (check-equal? (((add one two) inc) 2) 5)
+(check-equal? (((add-via-1 one two) inc) 2) 5)
