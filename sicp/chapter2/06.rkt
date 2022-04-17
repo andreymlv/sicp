@@ -11,10 +11,15 @@
   (lambda (_)
     (lambda (x) x)))
 
+(check-equal? ((zero inc) 0) 0)
+(check-equal? ((zero inc) 1) 1)
+
 (define (add-1 n)
   (lambda (f)
     (lambda (x)
       (f ((n f) x)))))
+
+(check-equal? (((add-1 zero) inc) 1) 2)
 
 ; 1. λf.λx.f(((λf.λx.x) f) x)
 ; 2. λf.λx.f(λx.x)x
@@ -23,6 +28,8 @@
   (lambda (f)
     (lambda (x)
       (f x))))
+
+(check-equal? ((one inc) 1) 2)
 
 ; 1. λf.λx.f(((λf.λx.fx) f) x)
 ; 2. λf.λx.f((λx.fx) x)
@@ -37,12 +44,9 @@
     (lambda (x)
       ((a f) ((b f) x)))))
 
+(check-equal? (((add one two) inc) 2) 5)
+
 (define (add-via-1 a b)
   ((a add-1) b))
 
-(check-equal? ((zero inc) 0) 0)
-(check-equal? ((zero inc) 1) 1)
-(check-equal? ((one inc) 1) 2)
-(check-equal? (((add-1 zero) inc) 1) 2)
-(check-equal? (((add one two) inc) 2) 5)
 (check-equal? (((add-via-1 one two) inc) 2) 5)
