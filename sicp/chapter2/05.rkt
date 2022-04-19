@@ -37,17 +37,18 @@
 ;; Number -> Number
 ;; prod. count how many times input number can be divided by 2
 (define (car z)
-  (round (log-with-base 2 (remove-multiplier z 3))))
+  (log-with-base 2 (remove-multiplier z 3)))
 
 (check-equal? (car (cons 4 5)) 4.0)
 
 ;; Number -> Number
 ;; prod. count how many times input number can be divided by 3
 (define (cdr z)
-  (round (log-with-base 3 (remove-multiplier z 2))))
+  (log-with-base 3 (remove-multiplier z 2)))
 
-(check-equal? (cdr (cons 4 5)) 5.0)
+(check-within (cdr (cons 4 5)) 5 0.001)
 
-(check-equal? (let ([z (cons 4 5)])
+(check-within (let ([z (cons 4 5)])
                 (cons (car z) (cdr z)))
-              3888.0)
+              3888
+              0.001)
